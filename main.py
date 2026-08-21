@@ -3,9 +3,14 @@ import mediapipe as mp
 import math
 import numpy as np
 import matplotlib.pyplot as plt
+import argparse
 from scipy.signal import medfilt
 
+parser = argparse.ArgumentParser(description="Analisador Biomecânico de Passes da NFL")
+parser.add_argument("--input", type=str, required=True, help="Caminho para o ficheiro de vídeo")
+parser.add_argument("--headless", action="store_true", help="Executar sem abrir a janela de vídeo")
 
+args = parser.parse_args()
 
 print("Caminho do mediapipe:", mp.__file__)
 mp_drawing = mp.solutions.drawing_utils
@@ -24,7 +29,7 @@ def calcular_angulo(a,b,c):
     return angulo
     
     
-cap = cv2.VideoCapture("passe.mp4")
+cap = cv2.VideoCapture(args.input)
 
 if not cap.isOpened():
     print("Erro ao abrir o ficheiro")
@@ -57,8 +62,8 @@ while cap.isOpened():
         cv2.putText(frame_redimensionado, str(int(arm_angle)), 
                     posicao_texto, 
                     cv2.FONT_HERSHEY_SIMPLEX, 1.5, (255,255,255), 3, cv2.LINE_AA)
-        
-    cv2.imshow("Passe", frame_redimensionado)
+    if not args.headless:
+        cv2.imshow("Passe", frame_redimensionado)
     
     if cv2.waitKey(25) & 0xFF == ord("q"):
         break
