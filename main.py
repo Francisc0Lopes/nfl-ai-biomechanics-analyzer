@@ -4,8 +4,13 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 import argparse
+import os 
 from scipy.signal import medfilt
 
+
+os.makedirs('data', exist_ok=True)
+np.save('data/historico_limpo.npy', historico_limpo)
+print("Dados guardados em 'data/historico_limpo.npy'")
 parser = argparse.ArgumentParser(description="Analisador Biomecânico de Passes da NFL")
 parser.add_argument("--input", type=str, required=True, help="Caminho para o ficheiro de vídeo")
 parser.add_argument("--headless", action="store_true", help="Executar sem abrir a janela de vídeo")
