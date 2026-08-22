@@ -59,7 +59,7 @@ Não perseguir mais correções agora — já foram testadas duas abordagens raz
 ## Próximos passos técnicos
 
 - [ ] Gravar vídeo de perfil para validação cruzada
-- [ ] Calcular velocidade angular (derivada do ângulo)
-- [ ] Exportar vídeo anotado com esqueleto sobreposto
+- [X] Calcular velocidade angular (derivada do ângulo)
+- [X] Exportar vídeo anotado com esqueleto sobreposto
 - [ ] Testar pipeline com 1-2 vídeos adicionais
 - https://github.com/Francisc0Lopes/nfl-ai-biomechanics-analyzer/issues/1
